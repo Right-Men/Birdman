@@ -1,0 +1,3 @@
+rootProject.name = 'birdman_dev'
+
+include ':app'
