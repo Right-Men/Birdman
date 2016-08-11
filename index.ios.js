@@ -4,50 +4,66 @@
  * @flow
  */
 
+
+
+ 
+
+
+
+
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, Alert } from 'react-native';
+import AppIntro from 'react-native-app-intro';
 
 class Birdman extends Component {
+  onSkipBtnHandle = (index) => {
+    Alert.alert('Skip');
+    console.log(index);
+  }
+  doneBtnHandle = () => {
+    Alert.alert('Done');
+  }
+  nextBtnHendle = (index) => {
+    Alert.alert('Next');
+    console.log(index);
+  }
+  onSlideChangeHandle = (index, total) => {
+    console.log(index, total);
+  }
   render() {
+    const pageArray = [{
+      title: 'Page 1',
+      description: 'Description 1',
+      img: 'https://goo.gl/Bnc3XP',
+      imgStyle: {
+        height: 80 * 2.5,
+        width: 109 * 2.5,
+      },
+      backgroundColor: '#fa931d',
+      fontColor: '#fff',
+      level: 10,
+    }, {
+      title: 'Page 2',
+      description: 'Description 2',
+      img: 'https://goo.gl/GPO6JB',
+      imgStyle: {
+        height: 93 * 2.5,
+        width: 103 * 2.5,
+      },
+      backgroundColor: '#a4b602',
+      fontColor: '#fff',
+      level: 10,
+    }];
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <AppIntro
+        onNextBtnClick={this.nextBtnHendle}
+        onDoneBtnClick={this.doneBtnHandle}
+        onSkipBtnClick={this.onSkipBtnHandle}
+        onSlideChange={this.onSlideChangeHandle}
+        pageArray={pageArray}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('Birdman', () => Birdman);
