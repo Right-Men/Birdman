@@ -1,0 +1,32 @@
+/**
+ *
+ *
+ *      物理返回键
+ *
+ *
+ * */
+'use strict';
+
+export function NavigatorGoBack(navigator) {
+    if(navigator && navigator.getCurrentRoutes().length > 1){
+        navigator.pop();
+        return true;
+    }
+    return false;
+};
+
+export function isEmptyObject(obj) {
+    for (var name in obj){
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
